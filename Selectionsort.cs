@@ -6,18 +6,19 @@
         {
             for (int i = 0; i < nums.Length; i++)
             {
-                for (int j = i; j < nums.Length; j++)
+                int minIndx = i;
+                for (int j = i + 1; j < nums.Length; j++)
                 {
-                    if (nums[i] > nums[j])
+                    if (nums[j] < nums[minIndx])
                     {
-                        var temp = nums[i];
-                        nums[i] = nums[j];
-                        nums[j] = temp;
+                        minIndx = j;
                     }
-                    else
-                    {
-                        continue;
-                    }
+                }
+                if (minIndx != i)
+                {
+                    var temp = nums[i];
+                    nums[i] = nums[minIndx];
+                    nums[minIndx] = temp;
                 }
             }
 
