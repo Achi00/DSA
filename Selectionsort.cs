@@ -4,21 +4,20 @@
     {
         public static int[] Solution(int[] nums)
         {
+
             for (int i = 0; i < nums.Length; i++)
             {
-                int minIndx = i;
+                int minIndex = i;
+
                 for (int j = i + 1; j < nums.Length; j++)
                 {
-                    if (nums[j] < nums[minIndx])
+                    if (nums[i] > nums[j])
                     {
-                        minIndx = j;
+                        minIndex = j;
+                        var temp = nums[i];
+                        nums[i] = nums[j];
+                        nums[j] = temp;
                     }
-                }
-                if (minIndx != i)
-                {
-                    var temp = nums[i];
-                    nums[i] = nums[minIndx];
-                    nums[minIndx] = temp;
                 }
             }
 

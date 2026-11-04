@@ -2,77 +2,65 @@
 {
     public class MergeSort
     {
-        public static void Solution(int[] nums)
+        public static int[] Solution(int[] nums)
         {
-            int length = nums.Length;
-
-            if (length <= 1)
+            if (nums.Length <= 1)
             {
-                return;
+                return nums;
             }
+            int middle = nums.Length / 2;
 
-            int middle = length / 2;
+            var leftArr = new int[middle];
+            var rightArr = new int[nums.Length - middle];
 
-            int[] leftArr = new int[middle];
-            int[] rightArr = new int[length - middle];
+            Array.Copy(nums, 0, leftArr, 0, leftArr.Length);
+            Array.Copy(nums, middle, rightArr, 0, rightArr.Length);
 
-            int j = 0;
+            var left = Solution(leftArr);
+            var right = Solution(rightArr);
 
-            for (int i = 0; i < length; i++)
-            {
-                if (i < middle)
-                {
-                    leftArr[i] = nums[i];
-                }
-                else
-                {
-                    rightArr[j] = nums[i];
-                    j++;
-                }
-            }
+            return Merge(left, right);
 
-            Solution(leftArr);
-            Solution(rightArr);
-            Merge(leftArr, rightArr, nums);
         }
 
-        public static void Merge(int[] leftArr, int[] rightArr, int[] arr)
+        private static int[] Merge(int[] left, int[] right)
         {
-            int left = arr.Length / 2;
-            int right = arr.Length - left;
+            int[] result = new int[left.Length + right.Length];
 
-            int i = 0;
             int l = 0;
             int r = 0;
+            int i = 0;
 
-            while (l < left && r < right)
+            while (l < left.Length && r < right.Length)
             {
-                if (leftArr[l] < rightArr[r])
+                if (left[l] <= right[r])
                 {
-                    arr[i] = leftArr[l];
-                    i++;
+                    result[i] = left[l];
                     l++;
                 }
                 else
                 {
-                    arr[i] = rightArr[r];
-                    i++;
+                    result[i] = right[r];
                     r++;
                 }
+
+                i++;
             }
 
-            while (l < left)
+            while (l < left.Length)
             {
-                arr[i] = leftArr[l];
+                result[i] = left[l];
                 i++;
                 l++;
             }
-            while (r < right)
+            while (r < right.Length)
             {
-                arr[i] = rightArr[r];
+                result[i] = right[r];
                 i++;
                 r++;
             }
+
+            return result;
         }
     }
 }
