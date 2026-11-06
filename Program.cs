@@ -1,11 +1,12 @@
 ﻿using DSA;
+using DSA.Search;
 using DSA.Sorting;
 
 int[] arr = [5, 1, 3, 5, 4, 7, 12, 9];
 
-var res = CountingSort.Solution(arr);
+var res = BinarySearch.Solution(arr, 5);
 
-foreach (var item in res)
+if (res is not null)
 {
-    Console.WriteLine(item);
+    Console.WriteLine(res);
 }
