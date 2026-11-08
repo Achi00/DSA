@@ -1,12 +1,13 @@
 ﻿using DSA;
 using DSA.Search;
 using DSA.Sorting;
+using DSA.TwoPointer;
 
-int[] arr = [5, 1, 3, 5, 4, 7, 12, 9];
+int[] arr = [1,2,3,4,5,6,7,8];
 
-var res = BinarySearch.Solution(arr, 5);
+var res = ReverseArray.Solution(arr);
 
-if (res is not null)
+foreach (var item in res)
 {
-    Console.WriteLine(res);
+    Console.WriteLine(item);
 }
