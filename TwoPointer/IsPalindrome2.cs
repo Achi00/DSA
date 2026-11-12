@@ -19,8 +19,8 @@
                     return Check(s, l + 1, r) || Check(s, l, r - 1);
                 }
             }
-
             return true;
+
         }
 
         private static bool Check(string s, int l, int r)
@@ -37,7 +37,6 @@
                     r--;
                 }
             }
-
             return true;
         }
     }
